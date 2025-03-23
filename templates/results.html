@@ -1,0 +1,187 @@
+<!-- templates/results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - YouTube Comment Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        .card-header {
+            background-color: #0b1995;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        .chart-container {
+            width: 100%;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .chart-img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+        }
+        .sentiment-badge {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+        .positive {
+            background-color: #4CAF50;
+        }
+        .negative {
+            background-color: #F44336;
+        }
+        .neutral {
+            background-color: #9E9E9E;
+        }
+        .comment-box {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ddd;
+        }
+        .comment-positive {
+            border-left-color: #4CAF50;
+        }
+        .comment-negative {
+            border-left-color: #F44336;
+        }
+        .btn-back {
+            background-color: #f05305;
+            border-color: #f05305;
+            color: white;
+        }
+        .btn-back:hover {
+            background-color: #d68709;
+            border-color: #d68709;
+            color: white;
+        }
+        .chart-card {
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>YouTube Comment Analysis</h1>
+            <a href="/" class="btn btn-back">New Analysis</a>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Video Information</h2>
+            </div>
+            <div class="card-body">
+                <h3 class="h4">{{ results.video_title }}</h3>
+                <p class="mb-2">Comments Analyzed: <strong>{{ results.comments_analyzed }}</strong></p>
+                <p class="mb-0">
+                    Overall Sentiment: 
+                    <span class="badge sentiment-badge {{ results.sentiment_result.lower() }}">
+                        {{ results.sentiment_result }}
+                    </span>
+                    (Score: {{ "%.2f"|format(results.avg_polarity) }})
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Sentiment Distribution</h2>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="chart-container flex-grow-1">
+                            <img src="data:image/png;base64,{{ pie_chart }}" alt="Sentiment Distribution Pie Chart" class="chart-img">
+                        </div>
+                        <div class="row text-center mt-3">
+                            <div class="col">
+                                <div class="h3 mb-0 text-success">{{ (results.positive_count/results.comments_analyzed * 100) | round(1)}}%</div>
+                                <div>Positive</div>
+                            </div>
+                            <div class="col">
+                                <div class="h3 mb-0 text-danger">{{ (results.negative_count/results.comments_analyzed * 100) | round(1)}}%</div>
+                                <div>Negative</div>
+                            </div>
+                            <div class="col">
+                                <div class="h3 mb-0 text-secondary">{{ (results.neutral_count/results.comments_analyzed * 100) | round(1)}}%</div>
+                                <div>Neutral</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Sentiment Counts</h2>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <div class="chart-container flex-grow-1">
+                            <img src="data:image/png;base64,{{ bar_chart }}" alt="Sentiment Analysis Bar Chart" class="chart-img">
+                        </div>
+                        <div class="row text-center mt-3">
+                            <div class="col">
+                                <div class="h3 mb-0 text-success">{{ results.positive_count }}</div>
+                                <div>Positive</div>
+                            </div>
+                            <div class="col">
+                                <div class="h3 mb-0 text-danger">{{ results.negative_count }}</div>
+                                <div>Negative</div>
+                            </div>
+                            <div class="col">
+                                <div class="h3 mb-0 text-secondary">{{ results.neutral_count }}</div>
+                                <div>Neutral</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Notable Comments</h2>
+            </div>
+            <div class="card-body">
+                <h5>Most Positive Comment:</h5>
+                <div class="comment-box comment-positive">
+                    {{ results.most_positive_comment }}
+                    <div class="mt-2 text-muted">Sentiment score: {{ "%.2f"|format(results.most_positive_score) }}</div>
+                </div>
+                
+                <h5 class="mt-4">Most Negative Comment:</h5>
+                <div class="comment-box comment-negative">
+                    {{ results.most_negative_comment }}
+                    <div class="mt-2 text-muted">Sentiment score: {{ "%.2f"|format(results.most_negative_score) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
