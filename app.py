@@ -14,7 +14,7 @@ import numpy as np
 import html
 
 # Set your YouTube API key here
-API_KEY = 'AIzaSyA62xIsuarrTG7mWJAnUzhLJKsqEsDHUxg'  # Replace with your actual API key
+API_KEY = 'api_key'  # Replace with your actual API key
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # For session management
