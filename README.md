@@ -1,7 +1,6 @@
 # YouTube-Comment-Analysis
 
-![Image](https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/index.png)
-![Image](https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png)
+<img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png" width="800" height="auto">
 
 ## 🎥 Demo
 
