@@ -86,7 +86,7 @@ Here’s a quick demo of the **YouTube-Comment-Analysis**:
 2. **Fetch Comments**: The YouTube Data API fetches up to 1000 comments from the video.
 3. **Clean and Filter Comments**: The comments are cleaned (HTML tags removed) and filtered for relevance.
 4. **Sentiment Analysis**: Each comment is analyzed using **Vader Sentiment Analysis** to classify it as positive, negative, or neutral.
-5. **Visualization**: Visual representations of sentiment distributions are generated using **Matplotlib**, displayed as bar and pie charts.
+5. **Visualization**: Visual representations of sentiment distributions are displayed as bar and pie charts.
 6. **Display Results**: Results, including sentiment statistics and notable comments, are shown to the user.
 
 ## 📊 Results
