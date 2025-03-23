@@ -1,8 +1,8 @@
 # YouTube-Comment-Analysis
 
-This project analyzes the sentiment of comments on YouTube videos. It uses sentiment analysis to classify comments as positive, negative, or neutral, and provides visualizations to display the distribution of these sentiments.
+This tool analyzes the sentiment of comments on YouTube videos. It uses sentiment analysis to classify comments as positive, negative, or neutral, and provides visualizations to display the distribution of these sentiments.
 
-<img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png" width="800" height="auto">
+<img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/index.png" width="800" height="auto">
 
 ## 🎥 Demo
 
@@ -41,7 +41,7 @@ Here’s a quick demo of the **YouTube-Comment-Analysis**:
 ![html5](https://img.shields.io/badge/html5-%23FF6F00.svg?logo=html5&logoColor=white)
 ![css3](https://img.shields.io/badge/css3-8A2BE2.svg?logo=css3&logoColor=white)
 
-## 🚀 Setup Instructions  
+## 📖 Setup Instructions  
 
 1. Clone the repository:
    ```sh
@@ -55,3 +55,32 @@ Here’s a quick demo of the **YouTube-Comment-Analysis**:
    ```sh
    pip install -r requirements.txt
    ```
+4. Set Up YouTube API
+
+   To interact with the YouTube API, you need an API key. Follow these steps to get a YouTube API key:
+
+    * Go to the [Google Developer Console](https://console.developers.google.com/).
+    * Create a new project.
+    * Enable the **YouTube Data API v3** for your project.
+    * Generate an **API key** for your project.
+    * Paste the generated API key into the `app.py` file under the `API_KEY` variable:
+
+    ```python
+    API_KEY = 'your_api_key_here'  # Replace with your actual API key
+    
+5. Run the Flask application:
+   ```sh
+   python app.py
+   ```
+
+6. Use the Analysis
+
+   * Open your browser and go to `http://127.0.0.1:5000/`.
+   * Enter the YouTube video URL in the provided input field.
+   * Click on **"Analyze Comments"** to process the comments of the video.
+   * The results page will display the sentiment analysis results along with sentiment distribution charts.
+  
+## 📊 Results
+
+<img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png" width="800" height="auto">
+
