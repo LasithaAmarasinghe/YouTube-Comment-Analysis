@@ -80,6 +80,15 @@ Here’s a quick demo of the **YouTube-Comment-Analysis**:
    * Click on **"Analyze Comments"** to process the comments of the video.
    * The results page will display the sentiment analysis results along with sentiment distribution charts.
   
+## 📝 How This Works
+
+1. **Extract Video ID**: The user provides a YouTube video URL, which is parsed to extract the video ID.
+2. **Fetch Comments**: The YouTube Data API fetches up to 1000 comments from the video.
+3. **Clean and Filter Comments**: The comments are cleaned (HTML tags removed) and filtered for relevance.
+4. **Sentiment Analysis**: Each comment is analyzed using **Vader Sentiment Analysis** to classify it as positive, negative, or neutral.
+5. **Visualization**: Visual representations of sentiment distributions are generated using **Matplotlib**, displayed as bar and pie charts.
+6. **Display Results**: Results, including sentiment statistics and notable comments, are shown to the user.
+
 ## 📊 Results
 
 <img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png" width="800" height="auto">
