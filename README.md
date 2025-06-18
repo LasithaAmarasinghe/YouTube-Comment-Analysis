@@ -93,6 +93,9 @@ Here’s a quick demo of the **YouTube-Comment-Analysis**:
 
 <img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result.png" width="800" height="auto">
 
+<img src="https://github.com/LasithaAmarasinghe/YouTube-Comment-Analysis/raw/main/static/result2.png" width="800" height="auto">
+
+
 ## 📋 License
  
  * This project is licensed under the MIT License. See the [LICENSE](MIT-LICENSE.txt) file for details.
