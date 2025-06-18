@@ -23,8 +23,8 @@ def extract_video_id(url):
     """Extract YouTube video ID from various URL formats"""
     youtube_regex = (
         r'(https?://)?(www\.)?'
-        '(youtube|youtu|youtube-nocookie)\.(com|be)/'
-        '(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})')
+        '(youtube|youtu|youtube-nocookie)\\.(com|be)/'
+        '(watch\\?v=|embed/|v/|.+\\?v=)?([^&=%\\?]{11})')
     
     match = re.match(youtube_regex, url)
     if match:
